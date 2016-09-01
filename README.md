@@ -3,7 +3,11 @@ PHPArchive - Pure PHP ZIP and TAR handling
 
 Clone Change
 ------------
-* README.zh_TW.md
+
+* [README.zh_TW.md](https://github.com/samwhelp/php-archive/blob/master/README.zh_TW.md)
+
+Intro
+-----
 
 This library allows to handle new ZIP and TAR archives without the need for any special PHP extensions (gz and bzip are
 needed for compression). It can create new files or extract existing ones.
