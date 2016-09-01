@@ -12,7 +12,9 @@
 
 而該範例使用的是「PHP」的「[Extension](http://php.net/manual/en/book.zip.php)」，目前我找不到相關的參數可以設定，也不知道怎麼去修改。
 
-所以在「[Packagist](https://packagist.org/)」找到了一個使用PHP來實做的專案，然後做了一點簡單的調整，就可以用來解開含有「Big5檔名」的「Zip file」。
+所以在「[Packagist](https://packagist.org/)」找到了一個使用PHP來實做的專案「[php-archive](https://packagist.org/packages/splitbrain/php-archive)」，
+
+然後做了一點簡單的調整，就可以用來解開含有「Big5檔名」的「Zip file」。
 
 也就是目前這個專案，使用方式請參考下面的「Demo」。
 
