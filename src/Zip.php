@@ -2,6 +2,7 @@
 
 namespace splitbrain\PHPArchive;
 
+
 /**
  * Class Zip
  *
@@ -23,6 +24,30 @@ class Zip extends Archive
     protected $writeaccess = false;
     protected $ctrl_dir;
     protected $complevel = 9;
+
+	/**
+	 * Fix the Header Data
+	 *
+	 * @param array $header
+     * @return array
+	 */
+	protected function fixHeaderInfo($header)
+	{
+
+		if ($this->is_fix_path) {
+			// prototype
+			// https://gist.github.com/samwhelp/2f6764561bc3b5f15125
+			$filename = $header['filename'];
+			$encode = mb_detect_encoding($filename, $this->detect_encoding_list); //http://php.net/manual/en/function.mb-detect-encoding.php
+			if (strtoupper(trim($encode)) !== 'UTF-8') {
+				$filename = iconv($encode, 'UTF-8//IGNORE', $filename); // fix not UTF-8 charset //http://php.net/manual/en/function.iconv.php
+				////$filename = iconv('Big5', 'UTF-8//IGNORE', $filename);
+				////$filename = iconv('BIG-5', 'UTF-8//IGNORE', $filename);
+			}
+			$header['filename'] = $filename;
+		}
+		return $header;
+	}
 
     /**
      * Set the compression level.
@@ -82,7 +107,12 @@ class Zip extends Archive
         @fseek($this->fh, $centd['offset']);
 
         for ($i = 0; $i < $centd['entries']; $i++) {
-            $result[] = $this->header2fileinfo($this->readCentralFileHeader());
+			$header = $this->readCentralFileHeader();
+
+			// fix path charsets
+			$header = $this->fixHeaderInfo($header);
+
+            $result[] = $this->header2fileinfo($header);
         }
 
         $this->close();
@@ -133,6 +163,10 @@ class Zip extends Archive
             $pos_entry       = ftell($this->fh); // position of the next file in central file directory
             fseek($this->fh, $header['offset']); // seek to beginning of file header
             $header   = $this->readFileHeader($header);
+
+			// fix path charsets
+			$header = $this->fixHeaderInfo($header);
+
             $fileinfo = $this->header2fileinfo($header);
 
             // apply strip rules

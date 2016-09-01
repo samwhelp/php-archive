@@ -2,6 +2,10 @@
 
 namespace splitbrain\PHPArchive;
 
+
+define('ZIP_DETECT_ENCODING_LIST', 'UTF-8, BIG-5, ISO-8859-1');
+
+
 abstract class Archive
 {
 
@@ -9,6 +13,38 @@ abstract class Archive
     const COMPRESS_NONE = 0;
     const COMPRESS_GZIP = 1;
     const COMPRESS_BZIP = 2;
+
+
+	protected $is_fix_path = false;
+
+	/**
+	 * Set is fix path charset?
+	 *
+	 * @param boolean $val fix path charset or not
+	 * @return Archive
+	 */
+	public function setIsFixPath($val=true)
+	{
+		$this->is_fix_path = $val;
+		return $this;
+	}
+
+	protected $detect_encoding_list = ZIP_DETECT_ENCODING_LIST;
+
+	/**
+	 * Set the detect encoding list
+	 *
+	 * @param string $val encoding list
+	 * @return Archive
+	 */
+	public function setDetectEncodingList($val=null)
+	{
+		//http://php.net/manual/en/function.mb-detect-encoding.php
+		//http://php.net/manual/en/function.mb-detect-order.php
+		
+		$this->detect_encoding_list = $val;
+		return $this;
+	}
 
     /**
      * Set the compression level and type

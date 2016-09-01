@@ -1,6 +1,10 @@
 PHPArchive - Pure PHP ZIP and TAR handling
 ==========================================
 
+Clone Change
+------------
+* README.zh_TW.md
+
 This library allows to handle new ZIP and TAR archives without the need for any special PHP extensions (gz and bzip are
 needed for compression). It can create new files or extract existing ones.
 
@@ -67,4 +71,4 @@ Differences between Tar and Zip: Tars are compressed as a whole, while Zips comp
 you can call ```setCompression``` before each ```addFile()``` and ```addData()``` function call.
 
 The FileInfo class can be used to specify additional info like ownership or permissions when adding a file to
-an archive. 
+an archive.
