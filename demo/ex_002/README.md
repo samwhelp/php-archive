@@ -1,8 +1,10 @@
 # ex_002
 
-## step 1
+## test php-archive
 
-list zipfile
+### list zip file
+
+run
 
 ``` sh
 $ ./lszip.php
@@ -26,9 +28,9 @@ or
 $ php lszip.php | less
 ```
 
-## step 2
+## extract zip file
 
-extract zipfile
+run
 
 ``` sh
 $ ./unzip.php
@@ -44,4 +46,34 @@ then
 
 ``` sh
 $ tree tmp/ex
+```
+
+## test unzip
+
+### list zip file
+
+run (not expect)
+
+``` sh
+$ unzip -l ex.zip
+```
+
+run (not expect)
+
+``` sh
+$ unzip -O big5 -l ex.zip
+```
+
+### extract zip file
+
+run (not expect)
+
+``` sh
+$ unzip ex.zip
+```
+
+run (not expect)
+
+``` sh
+$ unzip -O big5 ex.zip
 ```
