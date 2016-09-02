@@ -27,7 +27,10 @@
 
 * https://gist.github.com/samwhelp/2f6764561bc3b5f15125
 * https://www.ubuntu-tw.org/modules/newbb/viewtopic.php?post_id=326994#forumpost326994
-* http://samwhelp.github.io/book-ubuntu-qna/read/case/file-compression/zip/unzip-big5.html
+* http://samwhelp.github.io/book-ubuntu-qna/read/howto/file-archiving-and-compression/zip/unzip-big5.html
+
+## PHP Manual
+
 * http://php.net/manual/en/book.zip.php
 * http://php.net/manual/en/function.mb-detect-order.php
 * http://php.net/manual/en/function.iconv.php
